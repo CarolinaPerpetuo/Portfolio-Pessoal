@@ -37,7 +37,7 @@ O projeto consome dados dinâmicos da **API do GitHub**, permitindo que informa�
 ## Estrutura do Projeto
 
 ```
-portfolio/
+Portfolio-Pessoal/
 │
 ├── index.html        # Página principal do portfólio
 ├── success.html      # Página de confirmação de envio do formulário
@@ -61,7 +61,7 @@ portfolio/
 - **CSS3**: Estilização, layout responsivo e animações
 - **JavaScript (ES6+)**: Interatividade, consumo de APIs e validações
 - **Swiper.js**: Carrossel de projetos responsivo
-- **Fom Submit:** Serviço de envio de e-mails via formulário HTML
+- **FomSubmit:** Serviço de envio de e-mails via formulário HTML
 - **GitHub API**: Fonte dinâmica de dados do perfil e repositórios
 
 ------
@@ -80,13 +80,13 @@ Para executar o projeto em ambiente local, siga os passos abaixo.
 1. Clone o repositório:
 
    ```bash
-   git clone https://github.com/seu-usuario/seu-repositorio.git
+   git clone https://github.com/CarolinaPerpetuo/Portfolio-Pessoal.git
    ```
 
 2. Acesse a pasta do projeto:
 
    ```bash
-   cd seu-repositorio
+   cd Portfolio-Pessoal
    ```
 
 3. Abra o projeto no Visual Studio Code:
@@ -105,7 +105,7 @@ O site será aberto no navegador e todas as alterações poderão ser visualizad
 
 Este site está disponível publicamente através do **GitHub Pages**. Você pode acessar a versão online pelo link abaixo:
 
-🔗 https://seu-usuario.github.io/seu-repositorio
+🔗 Em breve
 
 ------
 
