@@ -34,19 +34,13 @@ async function getAboutGithub() {
                 <h2>Sobre mim</h2>
 
                 <p>
-                    Sou desenvolvedora Full Stack em formação, com foco em Java,
-                    Spring Boot, MySQL, HTML, CSS e JavaScript.
-                    Tenho interesse em desenvolvimento back-end,
-                    análise de dados e criação de soluções tecnológicas
-                    funcionais e organizadas.
+                    Sou formada em Engenharia de Software e atualmente estou me especializando em Desenvolvimento Full Stack Java pela Generation Brasil.
+Tenho experiência com Java, Spring Boot, MySQL, HTML, CSS e JavaScript, desenvolvendo projetos práticos voltados para APIs REST, sistemas CRUD e aplicações web. Tenho especial interesse em desenvolvimento back-end, banco de dados e análise de dados.
                 </p>
 
                 <p>
-                    Atualmente estou aprimorando meus conhecimentos por meio
-                    de projetos práticos, estudos em desenvolvimento web e
-                    participação em formações na área de tecnologia.
-                    Busco uma oportunidade para aplicar minhas habilidades,
-                    continuar aprendendo e crescer profissionalmente.
+                    Acredito no aprendizado contínuo e na construção de conhecimento por meio da prática. Por isso, busco constantemente aprimorar minhas habilidades através de projetos, estudos e desafios que me permitam evoluir tecnicamente e profissionalmente.
+Atualmente procuro minha primeira oportunidade na área de tecnologia, onde eu possa contribuir, aprender com profissionais experientes e continuar construindo minha carreira como desenvolvedora.
                 </p>
 
                 <div class="about-buttons-data">
@@ -166,7 +160,7 @@ function iniciarSwiper() {
 
 async function getProjectsGithub() {
     try {
-        const resposta = await fetch("https://api.github.com/users/CarolinaPerpetuo/repos?sort=updated&per_page=6");
+        const resposta = await fetch("https://api.github.com/users/CarolinaPerpetuo/repos?sort=updated&per_page=100");
         const repositorios = await resposta.json();
 
         swiperWrapper.innerHTML = "";
@@ -188,7 +182,11 @@ async function getProjectsGithub() {
             "GitHub": "github",
         };
 
-        repositorios.forEach((repositorio) => {
+        const projetosFavoritos = repositorios.filter((repositorio) =>
+            repositorio.topics && repositorio.topics.includes("featured")
+        );
+
+        projetosFavoritos.forEach((repositorio) => {
             const linguagem = repositorio.language || "GitHub";
             const logo = linguagens[linguagem] || linguagens["GitHub"];
             const urlLogo = `./assets/icons/languages/${logo}.svg`;
@@ -197,8 +195,6 @@ async function getProjectsGithub() {
                 .replaceAll("_", " ")
                 .replaceAll("-", " ")
                 .toUpperCase();
-
-            const limite = 100;
 
             const truncar = (texto, limite) =>
                 texto.length > limite
@@ -210,7 +206,11 @@ async function getProjectsGithub() {
                 : "Projeto desenvolvido no GitHub";
 
             const tags = repositorio.topics.length > 0
-                ? repositorio.topics.slice(0, 3).map(topic => `<span class="tag">${topic}</span>`).join("")
+                ? repositorio.topics
+                    .filter(topic => topic !== "featured")
+                    .slice(0, 3)
+                    .map(topic => `<span class="tag">${topic}</span>`)
+                    .join("")
                 : `<span class="tag">${linguagem}</span>`;
 
             const botaoDeploy = repositorio.homepage
